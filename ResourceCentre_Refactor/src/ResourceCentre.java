@@ -2,6 +2,13 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
+	public static final int ITEM_TYPE_CHROMEBOOK = 2;
+	public static final int ITEM_TYPE_CAMCODER = 1;
+	public static final int OPTION_RETURN = 4;
+	private static final int OPTION_LOAN = 3;
+	public static final int OPTION_ADD = 2;
+	public static final int OPTION_VIEW = 1;
+	private static final int OPTION_QUIT = 5;
 
 	private static final int ITEM_TYPE_CHROMEBOOK = 2;
 	private static final int ITEM_TYPE_CAMCORDER = 1;
@@ -36,13 +43,15 @@ public class ResourceCentre {
 			} else if (option == OPTION_ADD) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");			
-				ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
+				itemTypeMenu();
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
+<<<<<<< HEAD
 				if (itemType == ITEM_TYPE_CAMCORDER) {
+=======
+				if (itemType == ITEM_TYPE_CAMCODER) {
+>>>>>>> branch 'master' of https://github.com/22024991-D3-T3-RC/ResourceCentre_Refactor.git
 					// Add a camcorder
 					Camcorder cc = inputCamcorder();
 					ResourceCentre.addCamcorder(camcorderList, cc);
@@ -61,13 +70,15 @@ public class ResourceCentre {
 			} else if (option == OPTION_LOAN) {
 				// Loan item
 				ResourceCentre.setHeader("LOAN");			
-				ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
+				itemTypeMenu();
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
+<<<<<<< HEAD
 				if (itemType == ITEM_TYPE_CAMCORDER) {
+=======
+				if (itemType == ITEM_TYPE_CAMCODER) {
+>>>>>>> branch 'master' of https://github.com/22024991-D3-T3-RC/ResourceCentre_Refactor.git
 					// Loan camcorder
 					ResourceCentre.loanCamcorder(camcorderList);
 				} else if (itemType == ITEM_TYPE_CHROMEBOOK) {
@@ -80,12 +91,14 @@ public class ResourceCentre {
 			} else if (option == OPTION_RETURN) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");				
-				ResourceCentre.setHeader("ITEM TYPES");
-				System.out.println("1. Camcorder");
-				System.out.println("2. Chromebook");
+				itemTypeMenu();
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
+<<<<<<< HEAD
 				if (itemType == ITEM_TYPE_CAMCORDER) {
+=======
+				if (itemType == ITEM_TYPE_CAMCODER) {
+>>>>>>> branch 'master' of https://github.com/22024991-D3-T3-RC/ResourceCentre_Refactor.git
 					// Return camcorder
 					ResourceCentre.returnCamcorder(camcorderList);
 				} else if (itemType == ITEM_TYPE_CHROMEBOOK) {
@@ -105,6 +118,12 @@ public class ResourceCentre {
 
 	}
 
+	public static void itemTypeMenu() {
+		ResourceCentre.setHeader("ITEM TYPES");
+		System.out.println("1. Camcorder");
+		System.out.println("2. Chromebook");
+	}
+
 	public static void menu() {
 		ResourceCentre.setHeader("RESOURCE CENTRE APP");
 		System.out.println("1. Display Inventory");
@@ -122,16 +141,16 @@ public class ResourceCentre {
 		Helper.line(80, "-");
 	}
 
-	public static String showAvailability(boolean isAvailable) {
-		String avail;
-
-		if (isAvailable == true) {
-			avail = "Yes";
-		} else {
-			avail = "No";
-		}
-		return avail;
-	}
+//	public static String showAvailability(boolean isAvailable) {
+//		String avail;
+//
+//		if (isAvailable == true) {
+//			avail = "Yes";
+//		} else {
+//			avail = "No";
+//		}
+//		return avail;
+//	}
 
 	//================================= Option 1 View (CRUD - Read) =================================
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
@@ -139,10 +158,7 @@ public class ResourceCentre {
 
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			output += String.format("%-84s\n", camcorderList.get(i).toString());
 		}
 		return output;
 	}
@@ -160,10 +176,7 @@ public class ResourceCentre {
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
-					chromebookList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
-					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			output += String.format("%-84s\n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
@@ -274,9 +287,14 @@ public class ResourceCentre {
 		for (int i = 0; i < chromebookList.size(); i++) {
 
 			String assetTag = chromebookList.get(i).getAssetTag();
+<<<<<<< HEAD
 			boolean availability = chromebookList.get(i).getIsAvailable();
 			if (tag.equalsIgnoreCase(assetTag)
 					&& availability == true) {
+=======
+			if (tag.equalsIgnoreCase(assetTag)
+					&& chromebookList.get(i).getIsAvailable() == true) {
+>>>>>>> branch 'master' of https://github.com/22024991-D3-T3-RC/ResourceCentre_Refactor.git
 				
 				chromebookList.get(i).setIsAvailable(false);
 				chromebookList.get(i).setDueDate(dueDate);
