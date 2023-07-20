@@ -10,8 +10,13 @@ public class ResourceCentre {
 	public static final int OPTION_VIEW = 1;
 	private static final int OPTION_QUIT = 5;
 
+<<<<<<< HEAD
 	private static final int ITEM_TYPE_CHROMEBOOK = 2;
 	private static final int ITEM_TYPE_CAMCORDER = 1;
+=======
+	private static final int ITEM_TYPE_CAMCODER = 1;
+	private static final int ITEM_TYPE_CHROMEBOOK = 2;
+>>>>>>> branch 'master' of https://github.com/22024991-D3-T3-RC/ResourceCentre_Refactor.git
 	private static final int OPTION_RETURN = 4;
 	private static final int OPTION_LOAN = 3;
 	private static final int OPTION_ADD = 2;
